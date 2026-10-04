@@ -27,7 +27,7 @@ Respond in EXACTLY this format:
 [{"n":1,"file":"<exact file name>","location":"<page/section/line if known>","quote":"<short verbatim excerpt>"}]`;
 
 export async function handleInvestigate(request: Request) {
-  const apiKey = process.env.LOVABLE_API_KEY;
+  const apiKey = process.env['LOVABLE_API_KEY'];
   if (!apiKey) return Response.json({ error: "AI is not configured." }, { status: 500 });
 
   let body: z.infer<typeof BodySchema>;
@@ -97,7 +97,7 @@ export async function handleInvestigate(request: Request) {
     } catch {
       sources = [];
     }
-    return Response.json({ answer: answer.trim(), sources });
+    return Response.json({ answer: (answer ?? '').trim(), sources });
   } catch (e) {
     const status = lastStatus || 500;
     const msg =
