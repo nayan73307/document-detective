@@ -8,3 +8,4 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+- AI document Q&A runs in a server route (src/routes/api/investigate.ts) with files sent per request and kept only in browser memory — no backend storage needed yet.
